@@ -9,8 +9,12 @@
     "start": "parcel src/index.html"
   },
   "dependencies": {
+    "moment": "^2.29.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.11",
