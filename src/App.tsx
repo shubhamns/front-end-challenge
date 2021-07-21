@@ -34,7 +34,12 @@ function App() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+      }}
+    >
       <div>
         <ul>
           {usersList.length > 0 &&
@@ -50,8 +55,18 @@ function App() {
                   }
                 >
                   <li>name: {item.patient?.name} </li>
-                  <li>startDate: {moment(item.startDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}</li>
-                  <li>endDate: {moment(item.endDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}</li>
+                  <li>
+                    startDate:{" "}
+                    {moment(item.startDate).format(
+                      "dddd, MMMM Do YYYY, h:mm:ss a"
+                    )}
+                  </li>
+                  <li>
+                    endDate:{" "}
+                    {moment(item.endDate).format(
+                      "dddd, MMMM Do YYYY, h:mm:ss a"
+                    )}
+                  </li>
                   <li>clinicianName: {item.clinicianName}</li>
                   <li>
                     <select
@@ -68,21 +83,25 @@ function App() {
                       </option>
                     </select>
                   </li>
-
+                  <button onClick={() => handleAddAppointment(item)}>
+                    Add Appointment
+                  </button>
+                  <br />
                   {selected === index &&
                     appointmentList
                       .filter((item: any) => item.clinicianName === selectInput)
                       .map((item: any, index: number) => {
                         return (
                           <div style={{ color: "red" }} key={index}>
-                            <li>{moment(item.startDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}</li>
+                            <li>
+                              {moment(item.startDate).format(
+                                "dddd, MMMM Do YYYY, h:mm:ss a"
+                              )}
+                            </li>
                             <li>{item.clinicianName}</li>
                           </div>
                         );
                       })}
-                  <button onClick={() => handleAddAppointment(item)}>
-                    Add Appointment
-                  </button>
                   <br />
                   <br />
                 </div>
@@ -93,6 +112,7 @@ function App() {
       <div>
         <Appointment />
       </div>
+      <br />
     </div>
   );
 }

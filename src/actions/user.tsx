@@ -17,8 +17,8 @@ export function addAppointment(data: any) {
   };
 }
 
-export function deleteAppointment(data: any) {
+export function deleteAppointment(id: number) {
   return (dispatch: any) => {
-    dispatch({ type: DELETE_APPOINTMENT, payload: data });
+    dispatch({ type: DELETE_APPOINTMENT, payload: id });
   };
 }

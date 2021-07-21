@@ -7,15 +7,13 @@ function Appointment(props: any) {
   const dispatch = useDispatch();
   const appointmentList = useSelector((state: any) => state.user?.appointment);
 
-  const deletAppointment = (index: number) => {
-    const newArray = [...appointmentList];
-    newArray.splice(index, 1);
-    dispatch(deleteAppointment(newArray));
+  const deletAppointment = (id: number) => {
+    dispatch(deleteAppointment(id));
   };
 
   return (
     <div>
-      <p>Appointment Added</p>
+      <h3>Appointment Added</h3>
       {appointmentList.length > 0 &&
         appointmentList.map((item: any, index: number) => {
           return (
@@ -27,11 +25,21 @@ function Appointment(props: any) {
                   : {}
               }
             >
-              <li>startDate: {moment(item.startDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}</li>
+              <li>name: {item.patient?.name} </li>
+              <li>
+                startDate:{" "}
+                {moment(item.startDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+              </li>
+              <li>
+                endDate:{" "}
+                {moment(item.endDate).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+              </li>
               <li>clinicianName: {item.clinicianName}</li>
-              <button onClick={() => deletAppointment(index)}>
+              <br />
+              <button onClick={() => deletAppointment(item.id)}>
                 Remove Appointment
               </button>
+              <br />
               <br />
             </div>
           );

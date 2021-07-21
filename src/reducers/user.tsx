@@ -31,7 +31,9 @@ export function user(state = initialState, action: any) {
     case DELETE_APPOINTMENT:
       return {
         ...state,
-        appointment: action.payload,
+        appointment: state.appointment.filter(
+          (res: any) => res.id !== action.payload
+        ),
       };
 
     default:
